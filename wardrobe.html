@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Interior Display Module - Wardrobe</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: white;
+      background-color: black;
+    }
+
+    .bg-container {
+      background-image: url('back%2012.jpg');
+      background-size: cover;
+      background-position: center;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.7);
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    .nav-bar {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(10px);
+      border-radius: 30px;
+      padding: 10px 30px;
+      z-index: 10;
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-bar a {
+      color: white;
+      text-decoration: none;
+      padding: 10px;
+      font-size: 18px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-bar a:hover {
+      color: tomato;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+    }
+
+    .nav-bar a.active {
+      background-color: green;
+      border-radius: 10px;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      padding: 120px 20px 40px;
+      text-align: center;
+    }
+
+    .image-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .image-box {
+      width: 300px;
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 15px #000;
+    }
+
+    .image-box img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-bottom: 2px solid #fff;
+      cursor: pointer;
+    }
+
+    .caption {
+      padding: 10px;
+      font-size: 13px;
+      color: #f0f0f0;
+      background-color: rgba(0, 0, 0, 0.6);
+      line-height: 1.5;
+text-align: justify
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.95);
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .modal img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border: 5px solid white;
+      border-radius: 10px;
+      box-shadow: 0 0 25px black;
+    }
+
+    .back-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: #444;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      z-index: 10000;
+      transition: background 0.3s ease;
+    }
+
+    .back-button:hover {
+      background-color: tomato;
+    }
+  </style>
+</head>
+<body>
+
+  <a href="index.html" style="
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 20000;
+  background: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  transition: background 0.3s;
+"
+  onmouseover="this.style.background='tomato'"
+  onmouseout="this.style.background='#007bff'"
+>
+  &#8592; Back
+</a>
+
+
+<!-- Background and Grid -->
+<div class="bg-container">
+  <div class="overlay"></div>
+  <div class="content">
+<center><p style="font-size:19px;"> click the image to view in full screen....</p></center>
+
+    <div class="image-grid">
+
+      <div class="image-box">
+        <img src="ward%201.jpg" alt="Wardrobe 1" onclick="openModal(this.src)">
+        <div class="caption">A modern and highly functional bedroom with a prominent full-height wardrobe system. The wardrobe, spanning a large section of the wall, combines sleek off-white glossy panels with warm wood framing, offering extensive storage. Integrated into the wardrobe is a stylish dressing area with a mirror and a small drawer, illuminated by a warm glow. To the left, a comfortable bed with a dark green comforter is set against a wooden headboard accent and a patterned wallpaper above it.</div>
+      </div>
+
+      <div class="image-box">
+        <img src="ward%202.jpg" alt="Wardrobe 2" onclick="openModal(this.src)">
+        <div class="caption">A luxurious and contemporary walk-in closet or wardrobe system, designed with transparent glass doors that reveal illuminated interiors. The dark-framed glass doors enclose various compartments with warm wooden finishes, displaying neatly organized clothing, bags, and accessories. The internal lighting highlights the contents, creating a boutique-like display. A comfortable upholstered ottoman with a throw blanket sits in the foreground, suggesting a comfortable space for dressing. </div>
+      </div>
+
+      <div class="image-box">
+        <img src="ward%203.jpg" alt="Wardrobe 3" onclick="openModal(this.src)">
+        <div class="caption">A highly practical and modern multi-functional room, likely a bedroom or study, designed for efficiency and style. On the left, a integrated study area consists of a white desk with a yellow task lamp, a white ergonomic chair, and ample open shelving above for books, decorative items, and office supplies. To the right, a spacious wardrobe with a light wood grain finish and white accents is partially open, revealing illuminated compartments with hanging space for clothes.</div>
+      </div>
+
+      <div class="image-box">
+        <img src="ward%204.jpg" alt="Wardrobe 4" onclick="openModal(this.src)">
+        <div class="caption">A classic and sophisticated full-wall wardrobe system in a dark charcoal or grey finish, featuring traditional paneling and elegant brass knobs. The central section of the wardrobe cleverly incorporates an entertainment unit, with bi-fold doors that open to reveal a television, shelves, and drawers, along with a top compartment for luggage or other large items. This design allows the TV to be hidden when not in use, maintaining a clean and cohesive aesthetic.</div>
+      </div>
+
+      <div class="image-box">
+        <img src="ward%205.jpg" alt="Wardrobe 5" onclick="openModal(this.src)">
+        <div class="caption">a highly organized and spacious open wardrobe system crafted from warm-toned wood, presenting a clean and minimalist aesthetic. The modular design features multiple compartments with various configurations: long hanging rails for full-length garments, shorter rails for shirts and blouses, numerous open shelves for folded clothes and accessories, and pull-out drawers for smaller items.are meticulously arranged, emphasizing the system's capacity and efficient use of space. </div>
+      </div>
+
+      <div class="image-box">
+        <img src="ward%206.jpg" alt="Wardrobe 6" onclick="openModal(this.src)">
+        <div class="caption">a luxurious and spacious walk-in closet or dressing room, characterized by dark wood cabinetry and integrated lighting. The U-shaped layout features extensive open shelving, hanging rods, and pull-out drawers, all neatly displaying a wide array of clothing, shoes, and accessories. Overhead lighting illuminates each section, while sleek black boxes on the top shelves add to the organized aesthetic. In the center of the room, a large, light wood island with a dark trim provides additional storage. </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Modal Viewer -->
+<div id="myModal" class="modal" onclick="closeModal()">
+  <button class="back-button">Back</button>
+  <img id="modalImage" src="" alt="Full Screen View">
+</div>
+
+<script>
+  function openModal(src) {
+    document.getElementById("modalImage").src = src;
+    document.getElementById("myModal").style.display = "flex";
+  }
+
+  function closeModal() {
+    document.getElementById("myModal").style.display = "none";
+  }
+</script>
+
+</body>
+</html>

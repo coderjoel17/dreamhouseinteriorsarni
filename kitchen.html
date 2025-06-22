@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Interior Display Module</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: white;
+      background-color: black;
+    }
+
+    .bg-container {
+      background-image: url('back%2012.jpg');
+      background-size: cover;
+      background-position: center;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.7);
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    .nav-bar {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(10px);
+      border-radius: 30px;
+      padding: 10px 30px;
+      z-index: 10;
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-bar a {
+      color: white;
+      text-decoration: none;
+      padding: 10px;
+      font-size: 18px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-bar a:hover {
+      color: tomato;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+    }
+
+    .nav-bar a.active {
+      background-color: green;
+      border-radius: 10px;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      padding: 120px 20px 40px;
+      text-align: center;
+    }
+
+    .image-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .image-box {
+      display: inline-block;
+      width: 300px;
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 15px #000;
+      text-align: left;
+    }
+
+    .image-box img {
+      width: 100%;
+      height: 200px;            /* Uniform height */
+      object-fit: cover;        /* Ensures image fills box neatly */
+      display: block;
+      border-bottom: 2px solid #fff;
+      cursor: pointer;
+    }
+
+    .caption {
+      padding: 10px;
+      font-size: 13px;
+      color: #f0f0f0;
+      background-color: rgba(0, 0, 0, 0.6);
+      line-height: 1.5;
+text-align: justify
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.95);
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .modal img {
+      max-width: 90%;
+      max-height: 80%;
+      border: 5px solid white;
+      border-radius: 10px;
+    }
+
+    .back-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: #444;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      z-index: 10000;
+      transition: background 0.3s ease;
+    }
+
+    .back-button:hover {
+      background-color: tomato;
+    }
+  </style>
+</head>
+<body>
+
+<a href="index.html" style="
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 20000;
+  background: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  transition: background 0.3s;
+"
+  onmouseover="this.style.background='tomato'"
+  onmouseout="this.style.background='#007bff'"
+>
+  &#8592; Back
+</a>
+
+  <div class="bg-container">
+    <div class="overlay"></div>
+    <div class="content">
+<center><p style="font-size:19px;"> click the image to view in full screen....</p></center>
+
+      <div class="image-grid">
+
+        <div class="image-box">
+          <img src="kit%201.jpg" alt="Interior 1">
+          <div class="caption">
+            Modern L-shaped kitchen featuring a striking color palette of dusty blue lower cabinets, crisp white upper cabinets, and a dark countertop. The design efficiently integrates a gas cooktop with a sleek chimney hood and a built-in microwave, complemented by open wooden shelving. A subtly patterned backsplash and bright floor complete the look — stylish and functional.The kitchen is well-equipped with a microwave and various storage solutions, creating a modern and functional space.
+          </div>
+        </div>
+
+        <div class="image-box">
+          <img src="kit%202.jpg" alt="Interior 2">
+          <div class="caption">
+            The L-shaped layout includes a double sink beneath a large window with security bars, a built-in cooktop, and an overhead range hood, with ample storage provided by both upper and lower cabinets, some of which have slatted fronts. The kitchen is well-equipped with various utensils and dishes, suggesting a functional and inviting space, some of which have slatted fronts. The kitchen is well-equipped with various utensils and dishes, suggesting a functional and inviting space.
+          </div>
+        </div>
+
+        <div class="image-box">
+          <img src="kit%203.jpg" alt="Interior 3">
+          <div class="caption">
+           A modern kitchen with a striking two-toned design, predominantly featuring rich maroon and clean white cabinetry. The L-shaped layout includes both upper and lower cabinets, some with contrasting white doors, a double sink beneath a window, and a built-in hob with an overhead chimney. The kitchen is well-organized with various racks for dishes and utensils, and the dark countertops provide a sleek contrast to the cabinetry, creating a stylish and functional cooking space.
+          </div>
+        </div>
+
+        <div class="image-box">
+          <img src="kit 05.jpg" alt="Interior 4">
+          <div class="caption">contemporary kitchen dominated by a sophisticated palette of light grey cabinetry and pristine white countertops. The spacious layout includes a large island with a sink and modern pendant lighting, complementing the recessed lighting throughout. Integrated stainless steel appliances, a stylish backsplash, and a professional-grade range with a substantial range hood complete the functional and elegant design, suggesting a high-end and well-appointed cooking space.</div>
+        </div>
+
+        <div class="image-box">
+          <img src="kit%205.jpg" alt="Interior 5">
+          <div class="caption"> A stylish kitchen boasting a distinctive and elegant design, characterized by its muted green cabinetry with gold hardware. The L-shaped layout incorporates a sink beneath a window with a natural wood blind, and a hob with an integrated chimney. A prominent marble-patterned backsplash extends to the upper cabinets, which include some open wooden shelving for display, all under warm under-cabinet lighting, creating a sophisticated and inviting culinary space..</div>
+        </div>
+
+        <div class="image-box">
+          <img src="kit%206.jpg" alt="Interior 6">
+          <div class="caption">A minimalist and modern kitchen with a clean, linear design, featuring sleek white handleless cabinetry that extends from floor to ceiling for ample storage. The kitchen is equipped with integrated stainless steel appliances, including an oven, microwave, dishwasher, and a double-door refrigerator. A light-colored, subtly veined backsplash complements the white countertops,creating a bright and uncluttered aesthetic,he cabinetry is a light, neutral color,contributing to the streamlined look.</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Fullscreen Modal -->
+  <div id="imgModal" class="modal">
+    <button class="back-button" onclick="closeModal()">Back</button>
+    <img id="modalImage" src="" alt="Full View">
+  </div>
+
+  <script>
+    const modal = document.getElementById('imgModal');
+    const modalImg = document.getElementById('modalImage');
+    const images = document.querySelectorAll('.image-box img');
+
+    images.forEach(img => {
+      img.addEventListener('click', () => {
+        modal.style.display = "flex";
+        modalImg.src = img.src;
+      });
+    });
+
+    function closeModal() {
+      modal.style.display = "none";
+      modalImg.src = "";
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dream House Interiors</title>
+  <link rel="stylesheet" href="fontawesome-free-6.2.1-web/css/all.css">
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    margin-left: 180px; /* default space for sidebar */
+  }
+
+  section {
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+  }
+
+  .nav-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 180px;
+    height: 100%;
+    background-color: black;
+    backdrop-filter: blur(6px);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+  }
+
+  .nav-bar a {
+    color: white;
+    text-decoration: none;
+    padding: 15px 20px;
+    font-size: 18px;
+    width: 80%;
+    text-align: center;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  .nav-bar a:hover {
+    background-color: blue;
+  }
+
+  .bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+  }
+
+  #home {
+    background-image: url('back 10.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align: center;
+    color: white;
+  }
+
+  #home .content {
+    position: relative;
+    z-index: 1;
+    padding-top: 100px;
+  }
+
+  #home h1 {
+    font-size: 55px;
+    font-style: italic;
+    margin-top: 10px;
+  }
+
+  #home i {
+    font-size: 50px;
+    margin: 10px;
+  }
+
+  #gallery {
+    background-color: white;
+    color: black;
+  }
+
+  #gallery .content {
+    padding: 100px 20px;
+    z-index: 1;
+    position: relative;
+  }
+
+  .image-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .image-grid img {
+    max-width: 300px;
+    width: 70%;
+    height: auto;
+    border: 3px solid #555;
+    border-radius: 10px;
+    box-shadow: 0 0 15px #ccc;
+    cursor: pointer;
+  }
+
+  .image-grid img:hover {
+    transform: scale(1.05);
+  }
+
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9);
+  }
+
+  .modal img {
+    display: block;
+    max-width: 100%;
+    max-height: 70%;
+    margin: 5% auto;
+    border: 5px solid white;
+    border-radius: 10px;
+  }
+
+  h2 {
+    color: black;
+    font-size: 40px;
+  }
+
+  .back-button {
+    position: fixed;
+    top: 20px;
+    left: 30px;
+    background-color: #444;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 10000;
+  }
+
+  #design {
+    background-color: white;
+    color: black;
+  }
+
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 100px 20px;
+    z-index: 1;
+    position: relative;
+  }
+
+  .grid-item {
+    width: 300px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s;
+    text-decoration: none;
+    color: black;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+
+  .grid-item:hover {
+    transform: scale(1.05);
+  }
+
+  .grid-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .grid-item p {
+    text-align: center;
+    font-size: 18px;
+    padding: 10px;
+  }
+
+  #about {
+    background-color: white;
+    color: black;
+    text-align: center;
+  }
+
+  #about .content {
+    padding-top: 100px;
+    position: relative;
+    z-index: 1;
+  }
+
+  #about img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    margin-bottom: 20px;
+  }
+
+  footer {
+    margin-top: 30px;
+    padding: 20px;
+    background: grey;
+    color: white;
+    text-align: center;
+  }
+
+  footer a {
+    color: white;
+    margin: 0 10px;
+    font-size: 20px;
+  }
+
+  footer a:hover {
+    color: tomato;
+  }
+
+  #scrollTopBtn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 9999;
+    background-color: #444;
+    color: white;
+    border: none;
+    padding: 12px 16px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    display: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+
+  #scrollTopBtn:hover {
+    background-color: tomato;
+  }
+
+  .floating-icons {
+    position: fixed;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 10000;
+  }
+
+  .floating-icons a {
+    color: white;
+    background-color: purple;
+    font-size: 24px;
+    padding: 12px;
+    border-radius: 50%;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    transition: background 0.3s;
+  }
+
+  .floating-icons a.mail {
+    background-color: #D44638;
+  }
+
+  .floating-icons a.call {
+    background-color: #28a745;
+  }
+
+  .floating-icons a:hover {
+    opacity: 0.8;
+  }
+
+  a {
+    color: white;
+  }
+
+  /* Remove margin/padding from navbar and content */
+.navbar {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.content {
+    margin-bottom: 0;
+    padding-top: 0;
+}
+
+  @media (max-width: 891px) {
+    body {
+      margin-left: 100px;
+    }
+
+    .nav-bar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 180px; /* Reduced from original 250px */
+  height: 100%;
+  background-color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 60px;
+  z-index: 1000;
+}
+
+/* Adjust content to match new nav-bar width */
+.content {
+  margin-left: 180px; /* Match the nav-bar width */
+}
+
+
+    .nav-bar a {
+      padding: 10px 5px;
+      font-size: 12px;
+      width: 100%;
+      word-break: break-word;
+    }
+
+    #home h1 {
+      font-size: 24px;
+    }
+
+    .image-grid img {
+      width: 90%;
+    }
+
+    .grid {
+      padding: 50px 10px;
+    }
+
+    #home .content img {
+      width: 180px;
+    }
+
+    footer img {
+      width: 80px;
+    }
+  }
+</style>
+
+</head>
+<body>
+
+  <div class="nav-bar">
+    <a href="#home"><i class="fas fa-home"></i><br>Home</a>
+    <a href="#gallery"><i class="fas fa-images"></i><br>Projects</a>
+    <a href="#design"><i class="fas fa-pencil-ruler"></i><br>Designs</a>
+    <a href="#about"><i class="fas fa-info-circle"></i><br>About</a>
+  </div>
+
+  <section id="home">
+    <div class="bg-overlay"></div>
+    <div class="content">
+      <img src="logo_transparent.png" style="width:250px;">
+      <h1>DREAM HOUSE INTERIOR</h1>
+      <a href="https://www.instagram.com/dreamhouseInteriorsp/"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://www.facebook.com/share/18tV3UR3An/"><i class="fa-brands fa-facebook"></i></a>
+    </div>
+  </section>
+<br>
+<br>
+<br>
+
+
+  <section id="gallery">
+    <center><h style="font-size:38px;font-weight: bold;font-style: italic"> PROJECTS </h2></center>
+    <p style="color:grey;text-align: justify;padding-left: 50px;padding-right: 50px;"> Our latest interior works in Chennai exemplify a seamless fusion of contemporary aesthetics and practical functionality, transforming residential spaces into havens of style and comfort. These projects feature bespoke solutions, including elegant sliding wardrobes with integrated lighting, sophisticated media consoles crafted from a harmonious blend of rich wood and pristine white finishes, and innovative false ceilings that incorporate ambient lighting and striking design elements.Every detail, from the selection of premium materials like polished marble flooring and luxurious wall panels to the thoughtful creation of inviting study nooks and stylish entryways, is meticulously executed to deliver highly personalized and visually stunning interiors that cater to the modern homeowner's lifestyle.
+Our latest interior works projects in Chennai showcase a harmonious blend of modern aesthetics and highly functional design, capturing the contemporary spirit of urban living while incorporating timeless elegance. We specialize in creating bespoke spaces, from ingenious storage solutions like sleek sliding wardrobes and integrated media units that blend seamlessly with elegant finishes, to sophisticated false ceilings and well-appointed study areas. Each project reflects our commitment to meticulous craftsmanship, utilizing a palette of warm wood tones, pristine whites, and reflective surfaces to craft environments that are not only visually stunning but also maximize space and enhance daily living.
+</p>
+    <br><br>
+    <center><p style="font-size:19px;"> click the image to view in full screen....</p></center>
+    <div class="content">
+      <div class="image-grid">
+        <img src="img 7.jpg" alt="">
+        <img src="img 8.jpg" alt="">
+        <img src="img 10.jpg" alt="">
+        <img src="img 6.jpg" alt="">
+        <img src="img 9.jpg" alt="">
+        <img src="img 5.jpg" alt="">
+        <img src="img 11.jpg" alt="">
+        <img src="img 12.jpg" alt="">
+        <img src="img 14.jpg" alt="">
+      </div>
+    </div>
+  </section>
+
+  <section id="design">
+    <center><h3 style="font-size:38px;font-weight: bold;font-style: italic"> "DESIGN YOUR DREAMS,THE WAY YOU WANT" </h3></center>
+    <p style="color:grey;text-align: justify;padding-left: 50px;padding-right: 50px;"> House interior design is a creative and functional process that turns empty spaces into warm, inviting, and purposeful living environments. It encompasses everything from space planning, furniture layout, and lighting to color coordination, textures, and material selection. A well-designed interior enhances the flow and usability of each room while reflecting the unique personality, preferences, and lifestyle of the homeowner. Whether it’s creating a cozy bedroom retreat, a vibrant living room for gatherings, a sleek modular kitchen, or a serene pooja space, every element is thoughtfully curated to ensure balance, harmony, and comfort. Modern house interior design also focuses on sustainability, smart storage solutions, and maximizing natural light, resulting in homes that are not just beautiful to look at but also practical to live in. The goal is to make every space feel cohesive, emotionally satisfying, and timeless.Offering both visual delight and functional excellence.</p>
+<p style="color:grey;text-align: justify;padding-left: 50px;padding-right: 50px;">It enhances spatial efficiency, improves mood and productivity, and allows for seamless movement and interaction. With growing attention to detail, sustainability, and innovation, house interiors today incorporate modular solutions, smart technologies, and eco-friendly materials. Ultimately, interior design transforms a house into a home,a sanctuary that nurtures both body and spirit, tailored perfectly to the people who live within it.Living rooms become hubs of interaction and comfort, bedrooms transform into havens of peace, kitchens are made efficient yet stylish, and every niche is optimized with storage and utility in mind. Modern house interior design also emphasizes sustainability by incorporating eco-conscious materials, energy-saving lighting, and environmentally friendly practices. Smart technologies are seamlessly integrated, from automated lighting systems to space-saving furniture, ensuring that homes remain future-ready. More than just enhancing visual appeal, good interior design fosters emotional well-being, supports practical living, and adds long-term value to the property. It is the subtle art of balancing beauty and function creating spaces that tell a story, evoke a feeling, and most importantly, feel like home.</p>
+    <br><br>
+    <center><p style="font-size:19px;"> Click the image and choose your dream designs....</p></center>
+    <div class="grid">
+      <a href="kitchen.html" class="grid-item"><img src="kitchen.jpg"><p>Modular Kitchen</p></a>
+      <a href="living.html" class="grid-item"><img src="living.jpg"><p>Living Room</p></a>
+      <a href="bedroom.html" class="grid-item"><img src="bedroom.jpg"><p>Bedroom</p></a>
+      <a href="crockery.html" class="grid-item"><img src="dining.jpg"><p>Crockery</p></a>
+      <a href="pooja.html" class="grid-item"><img src="pooja.jpg"><p>Pooja</p></a>
+      <a href="foyer.html" class="grid-item"><img src="foyer.jpg"><p>Foyer</p></a>
+      <a href="wardrobe.html" class="grid-item"><img src="ward.jpg"><p>Wardrobes</p></a>
+      <a href="tvunit.html" class="grid-item"><img src="tv.jpg"><p>TV Unit</p></a>
+      <a href="kids.html" class="grid-item"><img src="Ki.jpg"><p>Kids bedroom</p></a>
+    </div>
+  </section>
+
+  <section id="about">
+<center><h style="font-size:38px;font-weight: bold;font-style: italic"> ABOUT US </h2></center>
+    <div class="content">
+
+      <img src="back 8.jpg" alt="About Image">
+     
+      <p>It all started from the dream to become an entrepreneur.</p>
+      <p>Dream House Interiors was founded by Inbaraja,</p>
+      <p>who had experience in this industry for about 15 years.</p>
+      <p>Very well experienced in every aspect of this field,</p>
+      <p>offering a happy experience to homeowners ensuring fair price and quality.</p>
+      <p style="font-size: 23px; font-weight: bold; font-style: italic;">Your Dream homes, We Deliver.</p>
+      <footer>
+        <p>Scan me for Location</p>
+        <img src="loc.jpg" style="width:100px;"><br>
+        <p>Contact No : 9345847264</p>
+        <p><i class="fa-solid fa-envelope fa-flip"></i> raja@dreamhouseinteriors.com</p>
+        <a href="https://www.instagram.com/dreamhouseInteriorsp/"><i class="fa-brands fa-instagram fa-spin"></i></a>
+        <a href="https://www.facebook.com/18tV3UR3An/"><i class="fa-brands fa-facebook fa-shake"></i></a>
+      </footer>
+    </div>
+  </section>
+
+  <div id="imgModal" class="modal">
+    <button class="back-button" onclick="closeModal()">← Back</button>
+    <img id="modalImage" src="" alt="Full View">
+  </div>
+
+  <button onclick="scrollToTop()" id="scrollTopBtn" title="Go to top">&#8679;</button>
+
+  <div class="floating-icons">
+    <a href="https://wa.me/919345847264" target="_blank" title="Chat on WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="tel:+919345847264" class="call" title="Call Us">
+      <i class="fas fa-phone-alt"></i>
+    </a>
+    <a href="mailto:raja@dreamhouseinteriors.com" class="mail" title="Send an Email">
+      <i class="fas fa-envelope"></i>
+    </a>
+  </div>
+
+  <script>
+    const images = document.querySelectorAll('.image-grid img');
+    const modal = document.getElementById('imgModal');
+    const modalImg = document.getElementById('modalImage');
+
+    images.forEach(img => {
+      img.addEventListener('click', () => {
+        modal.style.display = "block";
+        modalImg.src = img.src;
+      });
+    });
+
+    function closeModal() {
+      modal.style.display = "none";
+    }
+
+    window.onscroll = function() {
+      const btn = document.getElementById("scrollTopBtn");
+      btn.style.display = (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) ? "block" : "none";
+    };
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

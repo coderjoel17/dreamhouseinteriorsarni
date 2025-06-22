@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Interior Display Module - Living Room</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: white;
+      background-color: black;
+    }
+
+    .bg-container {
+      background-image: url('back%2012.jpg');
+      background-size: cover;
+      background-position: center;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.7);
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    .nav-bar {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(10px);
+      border-radius: 30px;
+      padding: 10px 30px;
+      z-index: 10;
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-bar a {
+      color: white;
+      text-decoration: none;
+      padding: 10px;
+      font-size: 18px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-bar a:hover {
+      color: tomato;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+    }
+
+    .nav-bar a.active {
+      background-color: green;
+      border-radius: 10px;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      padding: 120px 20px 40px;
+      text-align: center;
+    }
+
+    .image-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .image-box {
+      display: inline-block;
+      width: 300px;
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 15px #000;
+      text-align: left;
+    }
+
+    .image-box img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+      border-bottom: 2px solid #fff;
+      cursor: pointer;
+    }
+
+    .caption {
+      padding: 10px;
+      font-size: 13px;
+      color: #f0f0f0;
+      background-color: rgba(0, 0, 0, 0.6);
+      line-height: 1.5;
+text-align: justify
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.95);
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .modal img {
+      max-width: 90%;
+      max-height: 80vh;
+      object-fit: contain;
+      border: 5px solid white;
+      border-radius: 10px;
+      box-shadow: 0 0 25px black;
+    }
+
+    .back-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: #444;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      z-index: 10000;
+      transition: background 0.3s ease;
+    }
+
+    .back-button:hover {
+      background-color: tomato;
+    }
+  </style>
+</head>
+<body>
+
+  <a href="index.html" style="
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 20000;
+  background: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  transition: background 0.3s;
+"
+  onmouseover="this.style.background='tomato'"
+  onmouseout="this.style.background='#007bff'"
+>
+  &#8592; Back
+</a>
+
+ 
+  <!-- Background and Image Grid -->
+
+  <div class="bg-container">
+    <div class="overlay"></div>
+    <div class="content">
+<center><p style="font-size:19px;"> click the image to view in full screen....</p></center>
+
+      <div class="image-grid">
+
+
+        <!-- Image 1 -->
+        <div class="image-box">
+          <img src="liv%201.jpg" alt="Living Room 1">
+          <div class="caption">contemporary living room with an open-plan layout, characterized by a vibrant yet harmonious color palette. Two distinct seating areas are present: one features a large teal sofa with a view towards the TV unit and a tall, geometrically-designed white bookshelf with teal accents; the other includes a lighter-colored sofa with blue accent pillows, centered around a white coffee table and illuminated by modern hanging pendant lights.all contributing to a stylish and inviting atmosphere.</div>
+        </div>
+
+        <!-- Image 2 -->
+        <div class="image-box">
+          <img src="liv%202.jpg" alt="Living Room 2">
+          <div class="caption">modern Indian living room with a sophisticated and well-designed interior. Key features include a wall-mounted television unit with white and wood accents, next to a mirrored sliding door that likely leads to another room. A prominent dark wood display unit with intricate geometric patterns and decorative items serves as a focal point. The room also includes a built-in wooden bench with a blue cushion, contemporary ceiling designs with recessed lighting and track lights, and a stylish ceiling fan.</div>
+        </div>
+
+        <!-- Image 3 -->
+        <div class="image-box">
+          <img src="liv%203.jpg" alt="Living Room 3">
+          <div class="caption">a luxurious and elegantly furnished living room, dominated by a sophisticated neutral color palette of creams, beiges, and grays. The main seating area features two plush sofas, a central round coffee table, and a unique round ottoman, all arranged on a large, multi-toned circular rug. The accent wall behind the longer sofa is adorned with stylish wall sconces, a large ornate mirror, decorative shelving with various accents, and built-in bookshelves on either side, adding to the room's refined ambiance. </div>
+        </div>
+
+        <!-- Image 4 -->
+        <div class="image-box">
+          <img src="liv%204.jpg" alt="Living Room 4">
+          <div class="caption">a richly decorated living room, blending classic and modern elements. A prominent traditional sofa with carved wooden accents and plush grey upholstery, adorned with ornate cushions, faces a contemporary wall-mounted television. The TV is set against a luxurious marble-patterned panel, framed by a textured wall with subtle lighting, creating a focal point. A glass-top coffee table with a unique base sits on a light-colored, patterned rug.</div>
+        </div>
+
+        <!-- Image 5 -->
+        <div class="image-box">
+          <img src="liv%205.jpg" alt="Living Room 5">
+          <div class="caption"> a meticulously designed modern living room with a strong focus on the entertainment area. A large wall-mounted television is the centerpiece, flanked by two tall, illuminated display shelves filled with books and decorative objects. Below the television, a long, low media console with ample storage provides a sleek base. The wall behind the TV features a textured panel with subtle vertical gold accents, adding a touch of elegance.</div>
+        </div>
+
+        <!-- Image 6 -->
+        <div class="image-box">
+          <img src="liv%206.jpg" alt="Living Room 6">
+          <div class="caption"> a modern and inviting living room, centered around a stylish entertainment wall.two-toned media console with ample storage and decorative elements. Above the TV, a minimalist floating shelf holds decorative items, and to its left, a modular wall unit with glossy white and dark wood finishes provides additional storage and display space. The wall itself is a muted gray, complemented by warm lighting from recessed ceiling lights and two framed artworks.</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Lightbox -->
+  <div id="imageModal" class="modal">
+    <button class="back-button" id="modalBack">Back</button>
+    <img id="modalImage" src="" alt="Full View">
+  </div>
+
+  <script>
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImage");
+    const modalBack = document.getElementById("modalBack");
+    const images = document.querySelectorAll(".image-box img");
+
+    images.forEach((img) => {
+      img.addEventListener("click", () => {
+        modal.style.display = "flex";
+        modalImg.src = img.src;
+      });
+    });
+
+    modalBack.onclick = function () {
+      modal.style.display = "none";
+      modalImg.src = "";
+    };
+
+    window.onclick = function (event) {
+      if (event.target === modal) {
+        modal.style.display = "none";
+        modalImg.src = "";
+      }
+    };
+  </script>
+
+</body>
+</html>

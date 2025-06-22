@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Interior Display Module - Pooja</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: white;
+      background-color: black;
+    }
+
+    .bg-container {
+      background-image: url('back%2012.jpg');
+      background-size: cover;
+      background-position: center;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.7);
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    .nav-bar {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(10px);
+      border-radius: 30px;
+      padding: 10px 30px;
+      z-index: 10;
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-bar a {
+      color: white;
+      text-decoration: none;
+      padding: 10px;
+      font-size: 18px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-bar a:hover {
+      color: tomato;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+    }
+
+    .nav-bar a.active {
+      background-color: green;
+      border-radius: 10px;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      padding: 120px 20px 40px;
+      text-align: center;
+    }
+
+    .image-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .image-box {
+      width: 300px;
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 15px #000;
+      text-align: left;
+    }
+
+    .image-box img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-bottom: 2px solid #fff;
+      cursor: pointer;
+    }
+
+    .caption {
+      padding: 10px;
+      font-size: 13px;
+      color: #f0f0f0;
+      background-color: rgba(0, 0, 0, 0.6);
+      line-height: 1.5;
+text-align: justify
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.95);
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .modal img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border: 5px solid white;
+      border-radius: 10px;
+      box-shadow: 0 0 25px black;
+    }
+
+    .back-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: #444;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      z-index: 10000;
+      transition: background 0.3s ease;
+    }
+
+    .back-button:hover {
+      background-color: tomato;
+    }
+  </style>
+</head>
+<body>
+
+  <a href="index.html" style="
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 20000;
+  background: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  transition: background 0.3s;
+"
+  onmouseover="this.style.background='tomato'"
+  onmouseout="this.style.background='#007bff'"
+>
+  &#8592; Back
+</a>
+
+
+<!-- Background and Image Grid -->
+<div class="bg-container">
+  <div class="overlay"></div>
+  <div class="content">
+<center><p style="font-size:19px;"> click the image to view in full screen....</p></center>
+
+    <div class="image-grid">
+
+      <div class="image-box">
+        <img src="poj%201.jpg" alt="Pooja 1" onclick="openModal(this.src)">
+        <div class="caption">A beautifully designed home temple or puja room, showcasing a blend of traditional and contemporary elements. The central feature is an ornate white marble mandir housing a golden idol, likely of Ganesha, set against a backdrop of decorative wooden lattice panels. Flanking the mandir are two large potted plants and traditional wall sconces. The ceiling features recessed lighting and a classic chandelier, illuminating the space.A low, striped red ottoman provides a place for seating or offerings. </div>
+      </div>
+
+      <div class="image-box">
+        <img src="poj%202.jpg" alt="Pooja 2" onclick="openModal(this.src)">
+        <div class="caption">A beautifully crafted wooden home temple or 'mandir', a common feature in Indian households. The design is rich and traditional, with intricate carvings and brass or gold-colored accents on the sides and top. The central niche houses a statue of Lord Ganesha, illuminated by a spotlight, and is surrounded by smaller lit compartments displaying framed pictures of deities. The lower section consists of closed cabinets and a drawer, providing practical storage for prayer essentials.</div>
+      </div>
+
+      <div class="image-box">
+        <img src="poj%203.jpg" alt="Pooja 3" onclick="openModal(this.src)">
+        <div class="caption">A meticulously designed contemporary home temple or 'puja room', blending traditional elements with modern aesthetics. The main focus is a golden idol of Lord Ganesha, placed within a striking white and gold structure that appears to have intricate jali (lattice) work on its doors. The background wall is adorned with elegant marble-patterned tiles, illuminated by hidden strip lighting and recessed ceiling lights, creating a serene glow. </div>
+      </div>
+
+      <div class="image-box">
+        <img src="poj%204.jpg" alt="Pooja 4" onclick="openModal(this.src)">
+        <div class="caption"> A beautifully serene and modern home prayer area, likely a puja room or meditation space, with a focus on minimalist design and warm lighting. Three golden statues, likely of Buddha or similar deities, are centrally placed on a dark wooden platform. Behind them, a striking accent wall features vertical wooden panels illuminated by linear LED strips, creating a dramatic and reverent glow. Potted plants and fresh flowers adorn the platform.</div>
+      </div>
+
+      <div class="image-box">
+        <img src="poj%205.jpg" alt="Pooja 5" onclick="openModal(this.src)">
+        <div class="caption">The unit is primarily made of dark wood, with two central doors showcasing intricate white laser-cut panels depicting traditional motifs and the 'Om' symbol, backed by a golden, textured surface that reflects light. These central doors are likely where the deities are housed. On either side of the central doors,adding a traditional touch. The bottom part of the unit has lighter wood drawers with simple handles, providing additional storage. </div>
+      </div>
+
+      <div class="image-box">
+        <img src="poj%206.jpg" alt="Pooja 6" onclick="openModal(this.src)">
+        <div class="caption">The central feature is a backlit panel with an intricate, etched design of a large leaf or feather motif surrounded by floral patterns, creating a ethereal glow. This central panel is flanked by two side panels with numerous small, sparkling lights, mimicking stars or dewdrops. Below, a floating light-colored cabinet with three drawers serves as the base, adorned with various idols, including a prominent Ganesha statue, along with decorative lanterns and small potted plants.</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal" onclick="closeModal()">
+  <button class="back-button">Back</button>
+  <img id="modalImage" src="" alt="Full Screen View">
+</div>
+
+<script>
+  function openModal(src) {
+    document.getElementById("modalImage").src = src;
+    document.getElementById("myModal").style.display = "flex";
+  }
+
+  function closeModal() {
+    document.getElementById("myModal").style.display = "none";
+  }
+</script>
+
+</body>
+</html>

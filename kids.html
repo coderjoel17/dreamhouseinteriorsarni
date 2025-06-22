@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Interior Display Module - Kitchen</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: white;
+      background-color: black;
+    }
+
+    .bg-container {
+      background-image: url('ki back1.jpg');
+      background-size: cover;
+      background-position: center;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.7);
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    .nav-bar {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(10px);
+      border-radius: 30px;
+      padding: 10px 30px;
+      z-index: 10;
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-bar a {
+      color: white;
+      text-decoration: none;
+      padding: 10px;
+      font-size: 18px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-bar a:hover {
+      color: tomato;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+    }
+
+    .nav-bar a.active {
+      background-color: green;
+      border-radius: 10px;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      padding: 120px 20px 40px;
+      text-align: center;
+    }
+
+    .image-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .image-box {
+      width: 300px;
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 15px #000;
+    }
+
+    .image-box img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-bottom: 2px solid #fff;
+      cursor: pointer;
+    }
+
+    .caption {
+      padding: 10px;
+      font-size: 13px;
+      color: #f0f0f0;
+      background-color: rgba(0, 0, 0, 0.6);
+      line-height: 1.5;
+text-align: justify
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.95);
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .modal img {
+      max-width: 90%;
+      max-height: 80vh;
+      object-fit: contain;
+      border: 5px solid white;
+      border-radius: 10px;
+      box-shadow: 0 0 25px black;
+    }
+
+    .back-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: #444;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      z-index: 10000;
+      transition: background 0.3s ease;
+    }
+
+    .back-button:hover {
+      background-color: tomato;
+    }
+  </style>
+</head>
+<body>
+
+  <a href="index.html" style="
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 20000;
+  background: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  transition: background 0.3s;
+"
+  onmouseover="this.style.background='tomato'"
+  onmouseout="this.style.background='#007bff'"
+>
+  &#8592; Back
+</a>
+
+
+<!-- Background and Content -->
+<div class="bg-container">
+  <div class="overlay"></div>
+  <div class="content">
+<center><p style="font-size:19px;"> click the image to view in full screen....</p></center>
+
+    <div class="image-grid">
+
+      <div class="image-box">
+        <img src="ki%201.jpg" alt="Interior 1" onclick="openModal(this.src)">
+        <div class="caption">Playful children's bedroom, optimized for both sleep and study. On the right, a sturdy white bunk bed is integrated into a wooden-paneled wall, complete with built-in shelves displaying various decorative items and a small chalkboard easel. The lower bunk features drawers for extra storage. To the left, a dedicated study area includes a long wooden desk with a white chair, open shelving above in a mix of wood and white, and a green accent wall behind it,a cozy window nook with cushions and hanging pendant lights.</div>
+      </div>
+
+      <div class="image-box">
+        <img src="ki%202.jpg" alt="Interior 2" onclick="openModal(this.src)">
+        <div class="caption">Cheerful girl's bedroom, dominated by a vibrant pink and white color scheme. The room features a white bed with a pink frame and headboard, dressed in a blue comforter and colorful pillows, with a "Hello Kitty" rug at its base. To the left, a tall white wardrobe with pink paneling and heart cutouts provides storage. In the center, a white desk area with pink drawers and an accompanying chair is set against the wall, with open shelving above. Large windows are adorned with sheer pink curtains.</div>
+      </div>
+
+      <div class="image-box">
+        <img src="ki%203.jpg" alt="Interior 3" onclick="openModal(this.src)">
+        <div class="caption">Dominated by a blue and white themed bunk bed. The sturdy bunk bed features blue and white striped panels and a matching ladder, with built-in shelves on both bunks for books and small items. The lower bunk has integrated drawers for storage. In the background, hints of other colorful areas suggest an open-plan play space, with a second bed, beanbag chairs, and a colorful storage unit. The overall impression is one of a cheerful, organized, and functional room designed for children.</div>
+      </div>
+
+      <div class="image-box">
+        <img src="ki%204.jpg" alt="Interior 4" onclick="openModal(this.src)">
+        <div class="caption">The centerpiece is a large bed with a high, plush, upholstered headboard in a rich plum or burgundy color. Behind it, an accent wall features a striking geometric pattern of gold lines against a dark teal or emerald green background, illuminated from above. To the left of the bed, a cozy light blue armchair with a side table and a tall floor lamp creates a reading nook, while on the right, a dark, glass-fronted wardrobe with interior lighting adds a touch of modern sophistication. The room is further enhanced by round bedside lamps, a dramatic spherical chandelier, and a soft, light-colored rug.</div>
+      </div>
+
+      <div class="image-box">
+        <img src="ki%205.jpg" alt="Interior 5" onclick="openModal(this.src)">
+        <div class="caption">Children's bedroom, designed with a predominant blue and light wood color scheme, perfect for multiple occupants. The room features a sturdy bunk bed with a modern design, including integrated shelving and drawers in the lower bunk for storage. To the left of the bunk beds, a dedicated study area includes a desk with a blue chair and a wall-mounted unit combining open shelves and closed cabinets. On the right, a large, full-height blue wardrobe offers extensive storage, seamlessly blending with an open shelving unit in a light wood finish,The walls are adorned with nautical-themed artwork. </div>
+      </div>
+
+      <div class="image-box">
+        <img src="ki%206.jpg" alt="Interior 6" onclick="openModal(this.src)">
+        <div class="caption">The central feature is a custom-built bunk bed structure in a cheerful blue and white, with an upper bunk featuring a decorative "roof" in orange and yellow, creating a cozy fort-like feel. The lower bed has a trundle bed underneath, maximizing sleeping capacity. Integrated into the structure are shelves for books and toys, and a string of hanging decorations. To the left, a multi-level storage unit with drawers in shades of teal, orange, and white also functions as steps for the bunk bed. A large window on the right is adorned with a colorful, patterned curtain, and the room is further enhanced by framed artwork,.</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Modal Viewer -->
+<div id="imageModal" class="modal">
+  <button class="back-button" id="modalBack">Back</button>
+  <img id="modalImage" src="" alt="Full View">
+</div>
+
+<script>
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("modalImage");
+  const modalBack = document.getElementById("modalBack");
+  const images = document.querySelectorAll(".image-box img");
+
+  images.forEach((img) => {
+    img.addEventListener("click", () => {
+      modal.style.display = "flex";
+      modalImg.src = img.src;
+    });
+  });
+
+  modalBack.onclick = () => {
+    modal.style.display = "none";
+    modalImg.src = "";
+  };
+
+  window.onclick = (event) => {
+    if (event.target === modal) {
+      modal.style.display = "none";
+      modalImg.src = "";
+    }
+  };
+</script>
+
+</body>
+</html>
