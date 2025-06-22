@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Interior Display Module - Foyer</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: white;
+      background-color: black;
+    }
+
+    .bg-container {
+      background-image: url('back%2012.jpg');
+      background-size: cover;
+      background-position: center;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.7);
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    .nav-bar {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(10px);
+      border-radius: 30px;
+      padding: 10px 30px;
+      z-index: 10;
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-bar a {
+      color: white;
+      text-decoration: none;
+      padding: 10px;
+      font-size: 18px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-bar a:hover {
+      color: tomato;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+    }
+
+    .nav-bar a.active {
+      background-color: green;
+      border-radius: 10px;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      padding: 120px 20px 40px;
+      text-align: center;
+    }
+
+    .image-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .image-box {
+      width: 300px;
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 15px #000;
+      text-align: left;
+    }
+
+    .image-box img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-bottom: 2px solid #fff;
+      cursor: pointer;
+    }
+
+    .caption {
+      padding: 10px;
+      font-size: 13px;
+      color: #f0f0f0;
+      background-color: rgba(0, 0, 0, 0.6);
+      line-height: 1.5;
+text-align: justify
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.95);
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .modal img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border: 5px solid white;
+      border-radius: 10px;
+      box-shadow: 0 0 25px black;
+    }
+
+    .back-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: #444;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      z-index: 10000;
+      transition: background 0.3s ease;
+    }
+
+    .back-button:hover {
+      background-color: tomato;
+    }
+  </style>
+</head>
+<body>
+
+  <a href="index.html" style="
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 20000;
+  background: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  transition: background 0.3s;
+"
+  onmouseover="this.style.background='tomato'"
+  onmouseout="this.style.background='#007bff'"
+>
+  &#8592; Back
+</a>
+
+
+<!-- Background & Grid -->
+<div class="bg-container">
+  <div class="overlay"></div>
+  <div class="content">
+<center><p style="font-size:19px;"> click the image to view in full screen....</p></center>
+
+    <div class="image-grid">
+
+      <div class="image-box">
+        <img src="foy%201.jpg" alt="Foyer 1" onclick="openModal(this.src)">
+        <div class="caption">A contemporary and functional entryway or foyer in a modern Indian home. On the left, a stepped shoe rack or storage unit in a striking combination of maroon and light wood features both open display shelves and closed compartments, with a cushioned top for seating while putting on or taking off shoes. Above it,a decorative round mirror with a unique sunburst-like frame adds a stylish touch. To the right, a tall, elegant vase with bare branches stands next to a wooden partition that hints at an open-plan living and dining area beyond, characterized by warm lighting and sophisticated decor.</div>
+      </div>
+
+      <div class="image-box">
+        <img src="foy%202.jpg" alt="Foyer 2" onclick="openModal(this.src)">
+        <div class="caption">A practical and aesthetically pleasing entryway or foyer area, likely in an Indian home, designed for efficient use of space. A compact shoe cabinet in a textured light brown finish with dark accents serves as the main storage, featuring two large doors and a smaller, integrated unit to the right with a vibrant blue cushioned seat, perfect for sitting while putting on or taking off shoes. Above the cabinet, a minimalist shelf with recessed spotlights illuminates the white wall, where a small potted plant, a decorative vase, and an abstract sculpture are displayed.To the left, a dark wooden door suggests the entrance to the home,indicating an open-plan layout. </div>
+      </div>
+
+      <div class="image-box">
+        <img src="foy%203.jpg" alt="Foyer 3" onclick="openModal(this.src)">
+        <div class="caption">A beautifully designed and inviting entryway or foyer, characterized by a striking accent wall and functional elements. The focal point is a stacked stone accent wall with integrated warm lighting from above, creating a dramatic texture. Centered on this wall is an ornate white decorative medallion, placed above a small floating shelf. Below the accent wall, a well-integrated seating unit with a cushioned bench and storage cabinets on either side provides a practical and comfortable spot for guests. Decorative items like an abstract sculpture, throw pillows, and a vase with flowers enhance the aesthetic.</div>
+      </div>
+
+      <div class="image-box">
+        <img src="foy%204.jpg" alt="Foyer 4" onclick="openModal(this.src)">
+        <div class="caption">A stylish and functional entryway or foyer area, featuring a modern storage solution and decorative elements. The main piece of furniture is a cohesive unit made of warm-toned wood, combining a long bench with a light-colored cushion for seating, a shoe cabinet below it, and additional drawers and a tall wardrobe unit on the right. A painting of white flowers hangs above the bench against a dark, patterned wallpaper, adding a touch of elegance,welcoming and organized space. </div>
+      </div>
+
+      <div class="image-box">
+        <img src="foy%205.jpg" alt="Foyer 5" onclick="openModal(this.src)">
+        <div class="caption">A highly organized and stylish modern entryway or foyer unit, designed for practicality and aesthetic appeal. The unit is a combination of rich brown wood panels and sleek, matte grey-taupe cabinets and shelves. It features an integrated bench with a light-colored cushion, perfect for sitting while putting on shoes. Above the bench, hooks are provided for coats and umbrellas, and various open shelves and closed square cabinets offer display and storage space for decorative items, hats, and other essentials.</div>
+      </div>
+
+      <div class="image-box">
+        <img src="foy%206.jpg" alt="Foyer 6" onclick="openModal(this.src)">
+        <div class="caption">A contemporary and inviting entryway or foyer, designed with a focus on clean lines and natural textures. The main feature is a custom-built wooden shoe cabinet with a light-colored cushioned bench integrated on the left, providing a convenient spot for seating. Above the bench, a large, circular mirror with a black frame is centered against a stylish accent wall with vertical striped paneling in a light neutral tone. A modern pendant light hangs from the ceiling, illuminating the space. </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal" onclick="closeModal()">
+  <button class="back-button">Back</button>
+  <img id="modalImage" src="" alt="Full Screen View">
+</div>
+
+<script>
+  function openModal(src) {
+    document.getElementById("modalImage").src = src;
+    document.getElementById("myModal").style.display = "flex";
+  }
+
+  function closeModal() {
+    document.getElementById("myModal").style.display = "none";
+  }
+</script>
+
+</body>
+</html>
